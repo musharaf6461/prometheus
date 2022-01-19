@@ -1,17 +1,5 @@
 groups:
 
-- name: Cpu-usage
-  rules:
-  - alert: HostHighCpuLoad
-    expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 95
-    for: 3m
-    labels:
-      severity: warning
-    annotations:
-      summary: Host high CPU load (instance {{ $labels.instance }})
-      description: "CPU load is > 95%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-
-
 - name: Disk-usage
   rules:
   - alert: 'Low data disk space'
@@ -47,21 +35,25 @@ groups:
       title: "Low Disk space"
       summary: Host out of disk space (instance {{ $labels.instance }})
       description: "Disk is getting full (< 10% left)\n  Available Space is only= {{ $value }} %\n  LABELS = {{ $labels }}"
-- name:  Pod level alert 
+
+- name: High-Pod-CPU
   rules:
-  - alert: ContainerCpuUsage
-    expr: avg(sum(rate(container_cpu_usage_seconds_total{name!=""}[15m])) BY (instance, name) * 1000)  > 40 
+  - alert: HighPodCPU
+    expr: avg(rate(container_cpu_usage_seconds_total{namespace!="",image!="",container_name!="POD"}[5m])*100) by (pod,namespace  )  > 90
     for: 15m
     labels:
       severity: warning
     annotations:
-      summary: Container CPU usage
-      description: "Average Container CPU usage is above 40%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-  - alert: KubernetesPodCrashLooping
-    expr: increase(kube_pod_container_status_restarts_total[1m]) > 3
-    for: 2m
+      summary: HighCpuUsage
+      description: "Pod cpu average value : {{ $value | printf \"%.2f\" }}"
+     
+- name: CPU-load
+  rules:
+  - alert: HighNodeCPU
+    expr: rate(node_load15[5m])*100 > 60
+    for : 5m
     labels:
       severity: warning
     annotations:
-      summary: Kubernetes pod crash looping (instance {{ $labels.instance }})
-      description: "Pod {{ $labels.pod }} is crash looping\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      summary: "High CPU load (instance {{ $labels.instance }})"
+      description: "CPU load is high\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
