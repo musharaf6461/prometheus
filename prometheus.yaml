@@ -66,4 +66,10 @@ scrape_configs:
     scrape_interval: 60s
     static_configs:
     - targets: ['yace-0-29-0-29:5000']
+    
+  - job_name: 'mysql'
+    static_configs:
+            - targets: ['mysql:9104']
+#              labels:
+#                kubernetes_namespace: Development
 
