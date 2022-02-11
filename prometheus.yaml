@@ -69,7 +69,7 @@ scrape_configs:
     
   - job_name: 'mysql'
     static_configs:
-            - targets: ['localhost:9104']
+            - targets: ['172.31.25.240:9104']
 #              labels:
 #                kubernetes_namespace: Development
 
