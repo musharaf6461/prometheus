@@ -71,6 +71,6 @@ scrape_configs:
     static_configs:
     - targets: ['mysql-5-7:9104']
       labels:
-        namespace: sidharth-v-dev
+        namespace: sidharth-v-dev,minnaniju-dev
         pod: mysql-5-7-0
 
