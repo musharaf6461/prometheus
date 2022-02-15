@@ -69,7 +69,7 @@ scrape_configs:
     
   - job_name: 'mysql'
     static_configs:
-    - targets: [mysql-5-7.sidharth-v-dev.svc.cluster.local:9104]
+    - targets: [mysql-5-7:9104]
       labels:
         namespace: sidharth-v-dev
         pod: mysql-5-7-0
