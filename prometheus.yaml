@@ -75,9 +75,9 @@ scrape_configs:
         #pod: ["mysql-5-7-0","mysql-5-7-1","mysql-5-7-2"]
         pod: mysql-5-7-0,mysql-5-7-1,mysql-5-7-2
     relabel_configs:
-    - source_labels: [__meta_kubernetes_pod_name]
-      action: replace
-      target_label: kubernetes_pod_name
+      - source_labels: [__meta_kubernetes_pod_name]
+        action: replace
+        target_label: kubernetes_pod_name
         
              
         
