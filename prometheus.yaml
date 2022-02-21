@@ -97,9 +97,9 @@ scrape_configs:
         pod: mysql-5-7-2
     relabel_configs:
     - source_labels: [__address__]
-      regex: '.*'
+      regex: '([^:]+)(:[0-9]+)?'
       target_label: instance
-      replacement: appz-${1}
+      replacement: '${1}'
     #- targets: [mysql-5-7.francisjoy-dev.svc.cluster.local:9104]
      # labels:
       #  namespace: francisjoy-dev
