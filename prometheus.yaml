@@ -69,7 +69,7 @@ scrape_configs:
     
   - job_name: 'mysql'
     static_configs:
-    - targets: [10.1.198.26:9104]
+    - targets: [10.1.198.32:9104]
       labels:
         namespace: sidharth-v-dev
         pod: mysql-5-7-0
@@ -83,7 +83,7 @@ scrape_configs:
         namespace: sidharth-v-dev
         pod: mysql-5-7-2 
         
-    - targets: [10.1.198.2:9104]
+    - targets: [10.1.198.55:9104]
       labels:
         namespace: minnaniju-dev
         pod: mysql-5-7-0 
@@ -91,7 +91,7 @@ scrape_configs:
       labels:
         namespace: minnaniju-dev
         pod: mysql-5-7-1    
-    - targets: [10.1.198.35:9104]
+    - targets: [10.1.198.11:9104]
       labels:
         namespace: minnaniju-dev
         pod: mysql-5-7-2
