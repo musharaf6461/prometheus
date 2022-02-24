@@ -80,12 +80,42 @@ scrape_configs:
       labels:
         namespace: minnaniju-dev
         pod: mysql-5-7-0 
-   
+    
+        relabel_configs:
+ 
+      - source_labels: [__address__]
+
+      - target_label: __address__
+        replacement: Appz1:9104
+      - source_labels: [__param_target]
+        target_label: instance
+      - action: labelmap
+        regex: __meta_kubernetes_service_label_(.+)
+      - source_labels: [__meta_kubernetes_namespace]
+        target_label: namespace
+      - source_labels: [__meta_kubernetes_service_name]
+        target_label: service
+
+
+    kubernetes_sd_configs:
+      - role: pod
+
     relabel_configs:
-    - source_labels: [__address__]
-      regex: '.*'
-      target_label: instance
-      replacement: 'Appz${1}'
+
+      - action: labelmap
+        regex: __meta_kubernetes_pod_label_(.+)
+      - source_labels: [__meta_kubernetes_namespace]
+        action: replace
+        target_label: namespace
+      - source_labels: [__meta_kubernetes_pod_name]
+        action: replace
+        target_label: pod
+   
+    #relabel_configs:
+    #- source_labels: [__address__]
+      #regex: '.*'
+      #target_label: instance
+      #replacement: 'Appz${1}'
     #- targets: [mysql-5-7.francisjoy-dev.svc.cluster.local:9104]
      # labels:
       #  namespace: francisjoy-dev
