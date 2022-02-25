@@ -81,7 +81,7 @@ scrape_configs:
       action: replace
       target_label: kubernetes_namespace
     - source_labels: [__meta_kubernetes_pod_name]
-      regex: 'mysql-5-7-0'
+      regex: '9104'
       action: keep
       target_label: kubernetes_pod_name
     # labels:
