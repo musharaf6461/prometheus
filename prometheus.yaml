@@ -97,7 +97,7 @@ scrape_configs:
      #   namespace: minnaniju-dev
       #  pod: mysql-5-7-0 
     - source_labels: [__address__]
-      regex: '3306.*'
+      regex: '*.3306.*'
       action: drop
       
    
