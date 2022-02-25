@@ -71,13 +71,20 @@ scrape_configs:
     #static_configs:
     #- targets: [mysql-5-7.sidharth-v-dev.svc.cluster.local:9104]
    
+    #kubernetes_sd_configs:
+    #- role: endpoints
+    
     kubernetes_sd_configs:
-    - role: endpoints
-     
+    - namespaces:
+        names:
+        - sidharth-v-dev
+        - minnaniju-dev
+    
+    role: pod
     relabel_configs:
-    - source_labels: [__meta_kubernetes_namespace]
-      action: replace
-      target_label: kubernetes_namespace
+    #- source_labels: [__meta_kubernetes_namespace]
+     # action: replace
+      #target_label: kubernetes_namespace
     - source_labels: [__meta_kubernetes_pod_name]
       #regex: 'mysql*'
       action: replace
