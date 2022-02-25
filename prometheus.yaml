@@ -68,8 +68,8 @@ scrape_configs:
     - targets: ['yace-0-29-0-29:5000']
     
   - job_name: 'mysql'
-    static_configs:
-    - targets: [mysql-5-7.sidharth-v-dev.svc.cluster.local:9104]
+    #static_configs:
+    #- targets: [mysql-5-7.sidharth-v-dev.svc.cluster.local:9104]
    
     kubernetes_sd_configs:
     - role: endpoints
