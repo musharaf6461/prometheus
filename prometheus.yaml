@@ -97,9 +97,9 @@ scrape_configs:
      #   namespace: minnaniju-dev
       #  pod: mysql-5-7-0 
     - source_labels: [__address__]
-      regex: '^:3306/metrics'
-      action: drop
-      
+      regex: '^:9104/metrics'
+      action: replace
+      target_label: __address__
    
    
     #relabel_configs:
