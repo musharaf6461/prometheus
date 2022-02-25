@@ -100,10 +100,10 @@ scrape_configs:
    
    
     #relabel_configs:
-    #- source_labels: [__address__]
-      #regex: '.*'
-      #target_label: instance
-      #replacement: 'Appz${1}'
+    - source_labels: [__address__]
+      regex: '.*'
+      target_label: instance
+      replacement: 'Appz${1}'
     #- targets: [mysql-5-7.francisjoy-dev.svc.cluster.local:9104]
      # labels:
       #  namespace: francisjoy-dev
