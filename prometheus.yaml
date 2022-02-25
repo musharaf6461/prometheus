@@ -97,10 +97,10 @@ scrape_configs:
      #   namespace: minnaniju-dev
       #  pod: mysql-5-7-0 
     - source_labels: [__address__]
+      target_label: instance
       regex: '([^:]+)(:[3306]+)?'
-      action: replace
-      target_label: __address__
-   
+      replacement: '${1}'
+      
    
     #relabel_configs:
     - source_labels: [__address__]
