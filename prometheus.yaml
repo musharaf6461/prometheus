@@ -94,7 +94,7 @@ scrape_configs:
     
    
    
-    relabel_configs:
+    #relabel_configs:
     - source_labels: [__address__]
       regex: '.*'
       target_label: instance
