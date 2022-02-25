@@ -79,16 +79,16 @@ scrape_configs:
     - source_labels: [__meta_kubernetes_namespace]
       #regex: ''
       action: replace
-      target_label: kubernetes_namespace
+      target_label: namespace
     - source_labels: [__meta_kubernetes_pod_name]
       #regex: 'mysql-5-7.*'
       action: replace
-      target_label: kubernetes_pod_name
+      target_label: pod
     # labels:
       #  namespace: sidharth-v-dev
       #  pod: mysql-5-7-0
         
-    - source_labels: [kubernetes_pod_name]
+    - source_labels: [pod]
       regex: mysql-5-7.*
       action: keep
         
