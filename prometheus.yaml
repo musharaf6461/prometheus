@@ -68,8 +68,6 @@ scrape_configs:
     - targets: ['yace-0-29-0-29:5000']
     
   - job_name: 'mysql'
-    #static_configs:
-    #- targets: [mysql-5-7.sidharth-v-dev.svc.cluster.local:9104]
    
     kubernetes_sd_configs:
     - role: endpoints
@@ -77,38 +75,25 @@ scrape_configs:
     
     relabel_configs:
     - source_labels: [__meta_kubernetes_namespace]
-      #regex: ''
       action: replace
       target_label: namespace
     - source_labels: [__meta_kubernetes_pod_name]
-      #regex: 'mysql-5-7.*'
       action: replace
       target_label: pod
-    # labels:
-      #  namespace: sidharth-v-dev
-      #  pod: mysql-5-7-0
+
         
     - source_labels: [pod]
       regex: mysql-5-7.*
       action: keep
-        
-    #- targets: [mysql-5-7.minnaniju-dev.svc.cluster.local:9104]
-     # labels:
-     #   namespace: minnaniju-dev
-      #  pod: mysql-5-7-0 
+
     - source_labels: [__address__]
       target_label: __address__
       regex: '([^:]+)(:[3306]+)?'
       replacement: '${1}'
       action: drop
       
-   
-    #relabel_configs:
     - source_labels: [__address__]
       regex: '.*'
       target_label: instance
       replacement: 'Appz${1}'
-    #- targets: [mysql-5-7.francisjoy-dev.svc.cluster.local:9104]
-     # labels:
-      #  namespace: francisjoy-dev
-       # pod: mysql-5-7-0  
+ 
