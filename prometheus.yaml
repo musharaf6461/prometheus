@@ -67,6 +67,10 @@ scrape_configs:
     static_configs:
     - targets: ['yace-0-29-0-29:5000']
     
+  - job_name: 'nodejs'
+    static_configs:
+    - targets: ['hellonode-0-1:8080']  
+    
   - job_name: 'mysql'
    
     kubernetes_sd_configs:
@@ -97,11 +101,5 @@ scrape_configs:
       target_label: instance
       replacement: 'Appz${1}'
       
-    - job_name: 'nodejs'
 
-    #metrics_path defaults to '/metrics'
-    # scheme defaults to 'http'.
-
-      static_configs:
-      - targets: ['hellonode-0-1:8080']
  
