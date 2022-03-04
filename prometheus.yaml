@@ -96,4 +96,12 @@ scrape_configs:
       regex: '.*'
       target_label: instance
       replacement: 'Appz${1}'
+      
+    - job_name: 'nodejs'
+
+    #metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+      static_configs:
+      - targets: ['node:8080']
  
