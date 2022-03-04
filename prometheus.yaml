@@ -82,14 +82,14 @@ scrape_configs:
       target_label: pod
 
         
-    #- source_labels: [pod]
-     # regex: ^node.*
-      #action: keep
+    - source_labels: [pod]
+      regex: '((.*)node(.*))'
+      action: keep
 
     - source_labels: [__address__]
       target_label: __address__
       regex: '([^:]+)(:[3000]+)?'
-      regex: '([^:]+)(:[80]+)?'
+      #regex: '([^:]+)(:[80]+)?'
       replacement: '${1}'
       action: drop
       
