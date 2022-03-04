@@ -86,11 +86,12 @@ scrape_configs:
      # regex: ^node.*
       #action: keep
 
-    #- source_labels: [__address__]
-     # target_label: __address__
-      #regex: '([^:]+)(:[3000]+)?'
-      #replacement: '${1}'
-      #action: drop
+    - source_labels: [__address__]
+      target_label: __address__
+      regex: '([^:]+)(:[3000]+)?'
+      regex: '([^:]+)(:[80]+)?'
+      replacement: '${1}'
+      action: drop
       
     #- source_labels: [__address__]
      # regex: '.*'
