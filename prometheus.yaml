@@ -75,7 +75,7 @@ scrape_configs:
     
     relabel_configs:
     - source_labels: [__meta_kubernetes_namespace]
-      regex: true
+      
       action: replace
       target_label: namespace
     - source_labels: [__meta_kubernetes_pod_name]
@@ -97,9 +97,9 @@ scrape_configs:
       
     - source_labels: [__address__]
       target_label: __address__
-      regex: '([^:]+)(:[8080]+)?'
+      regex: '(.*):80'
       replacement: '${1}'
-      action: keep
+      action: drop
       
     #- source_labels: [__address__]
      # regex: '.*'
