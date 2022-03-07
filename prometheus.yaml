@@ -95,9 +95,9 @@ scrape_configs:
       
     - source_labels: [__address__]
       target_label: __address__
-      regex: '([^:]+)(:[80]+)?'
+      regex: '([^:]+)(:[8080]+)?'
       replacement: '${1}'
-      action: drop
+      action: keep
       
     #- source_labels: [__address__]
      # regex: '.*'
