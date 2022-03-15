@@ -124,6 +124,10 @@ scrape_configs:
     - source_labels: [pod]
       regex: mysql-5-7.*
       action: keep
+      
+    - source_labels: [pod]
+      regex: mariadb-master-10-4.*
+      action: keep  
 
     - source_labels: [__address__]
       target_label: __address__
@@ -135,6 +139,7 @@ scrape_configs:
       regex: '.*'
       target_label: instance
       replacement: 'Appz${1}'
+   
       
 
  
