@@ -117,6 +117,7 @@ scrape_configs:
       action: replace
       target_label: namespace
     - source_labels: [__meta_kubernetes_pod_name]
+      regex: mariadb-master-10-4.*
       action: replace
       target_label: pod
 
@@ -125,10 +126,10 @@ scrape_configs:
      # regex: mysql-5-7.*
      # action: keep
       
-    - source_labels: [pod]
-      regex: mysql-5-7.*
-      regex: mariadb-master-10-4.*
-      action: keep  
+    #- source_labels: [pod]
+     # regex: mysql-5-7.*
+      #regex: mariadb-master-10-4.*
+      #action: keep  
 
     - source_labels: [__address__]
       target_label: __address__
