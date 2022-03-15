@@ -126,6 +126,7 @@ scrape_configs:
      # action: keep
       
     - source_labels: [pod]
+      regex: mysql-5-7.*
       regex: mariadb-master-10-4.*
       action: keep  
 
