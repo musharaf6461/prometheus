@@ -86,7 +86,7 @@ scrape_configs:
         
     - source_labels: [pod]
       #regex: '((.*)hellonode(.*))'
-      regex: '((.*)hellonode(.*))'|'kbfc(.*))'|'hntest(.*))'
+      regex: '((.*)hellonode(.*))'|'((.*)kbfc(.*))'|'((.*)hntest(.*))'
       action: keep
 
     - source_labels: [__address__]
