@@ -67,6 +67,10 @@ scrape_configs:
     static_configs:
     - targets: ['yace-0-29-0-29:5000']
     
+  - job_name: 'jmeter'
+    static_configs:
+    - targets: ['jmeter-0-1:9270']
+    
   - job_name: 'nodejs'
    
     kubernetes_sd_configs:
