@@ -70,7 +70,11 @@ scrape_configs:
       target_label: __metrics_path__
       replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
       
-   - job_name: 'nodejs'
+     - job_name: 'jmeter'
+    static_configs:
+    - targets: ['jmeter-0-1:9270']
+    
+  - job_name: 'nodejs'
    
     kubernetes_sd_configs:
     - role: endpoints
