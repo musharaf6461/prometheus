@@ -123,4 +123,4 @@ scrape_configs:
         
     #- source_labels: [pod]
      # regex: mysql-5-7.*
-     # action: keep
+     # action: keep 
