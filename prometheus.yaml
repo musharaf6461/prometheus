@@ -70,21 +70,7 @@ scrape_configs:
       target_label: __metrics_path__
       replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
       
-   - job_name: 'nodejs'
-   
-    kubernetes_sd_configs:
-    - role: endpoints
-    
-    
-    relabel_configs:
-    - source_labels: [__meta_kubernetes_namespace]
-      
-      action: replace
-      target_label: namespace
-    - source_labels: [__meta_kubernetes_pod_name]
-      
-      action: replace
-      target_label: pod
+
 
         
     
@@ -95,7 +81,3 @@ scrape_configs:
       
    
       
-    - source_labels: [__address__]
-      regex: '.*'
-      target_label: instance
-      replacement: 'Appz${1}'  
