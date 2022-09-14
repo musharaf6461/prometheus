@@ -98,7 +98,10 @@ scrape_configs:
       regex: '(.*):80'
       replacement: '${1}'
       action: drop
-        
+    - source_labels: [__address__]
+      regex: '.*'
+      target_label: instance
+      replacement: 'Appz${1}'   
     
     
     
