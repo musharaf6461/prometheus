@@ -16,7 +16,7 @@ deploy:
     replicas: 1
     port:
     - 9090
-d
+
 volumes:
   - claim: prometheus-data
     mount: /appz/data
@@ -26,4 +26,4 @@ volumes:
     
   
 properties:
-    revision : 120
+    revision : 121
