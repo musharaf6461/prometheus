@@ -12,6 +12,7 @@ build:
 
 deploy:
     context: mushraf6461/DEV
+    #ingress: none
     type: statefulset
     replicas: 1
     port:
@@ -24,4 +25,4 @@ volumes:
     size: 50Gi
   
 properties:
-    revision : 61
+    revision : 96
