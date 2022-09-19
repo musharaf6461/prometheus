@@ -46,9 +46,9 @@ scrape_configs:
       #              labels:
       #                cluster: myCluster
 
-  - job_name: 'rabbitmq_exporter'
-    static_configs:
-            - targets: ['rabbitmq-3-9:15692']
+ # - job_name: 'rabbitmq_exporter'
+ #   static_configs:
+ #           - targets: ['rabbitmq-3-9:15692']
 
 
               #  - job_name: 'mysql'
@@ -160,10 +160,10 @@ scrape_configs:
               #      target_label: __metrics_path__
               #      replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
               #
-              #  - job_name: 'yace'
-              #    scrape_interval: 60s
-              #    static_configs:
-              #    - targets: ['172.31.17.93:5000']
+  - job_name: 'yace'
+    scrape_interval: 60s
+    static_configs:
+          - targets: ['172.31.17.93:5000']
               #
               #  - job_name: 'jmeter'
               #    static_configs:
