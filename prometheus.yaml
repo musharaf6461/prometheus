@@ -75,7 +75,7 @@ scrape_configs:
     - source_labels: [__address__]
       regex: '.*'
       target_label: instance
-      replacement: 'AppZ-${pod}'
+      replacement: '$pod'
 
   - job_name: 'mysql'
     kubernetes_sd_configs:
