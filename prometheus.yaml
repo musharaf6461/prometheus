@@ -62,7 +62,7 @@ scrape_configs:
       action: replace
       target_label: pod
         
-    - source_labels: [instance]
+    - source_labels: [pod]
       regex: redis.*
       action: keep  
 
