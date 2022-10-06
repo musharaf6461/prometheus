@@ -60,22 +60,22 @@ scrape_configs:
       target_label: namespace
     - source_labels: [__meta_kubernetes_pod_name]
       action: replace
-      target_label: pod
+      target_label: instance
         
-    - source_labels: [pod]
+    - source_labels: [instance]
       regex: redis.*
       action: keep  
 
-    - source_labels: [__address__]
-      target_label: __address__
-      regex: '([^:]+)(:[6379]+)?'
-      replacement: '${1}'
-      action: drop
+   # - source_labels: [__address__]
+   #   target_label: __address__
+   #   regex: '([^:]+)(:[6379]+)?'
+   #   replacement: '${1}'
+   #   action: drop
       
-    - source_labels: [__address__]
-      regex: '.*'
-      target_label: instance
-      replacement: '$pod'
+    #- source_labels: [__address__]
+    #  regex: '.*'
+    #  target_label: instance
+    #  replacement: '$pod'
 
   - job_name: 'mysql'
     kubernetes_sd_configs:
