@@ -58,13 +58,16 @@ scrape_configs:
     - source_labels: [__meta_kubernetes_namespace]
       action: replace
       target_label: namespace
-    - source_labels: [__meta_kubernetes_pod_name]
+    - source_labels: [__meta_kubernetes_pod_node_name]
       action: replace
       target_label: instance
-        
-    - source_labels: [instance]
+    - source_labels: [__meta_kubernetes_pod_name]
+      action: replace
+      target_label: pod
+
+    - source_labels: [pod]
       regex: redis.*
-      action: keep  
+      action: keep   
 
    # - source_labels: [__address__]
    #   target_label: __address__
