@@ -28,6 +28,18 @@ scrape_configs:
 
     static_configs:
     - targets: ['localhost:9090']
+
+
+
+  - job_name: 'cassandra'
+    static_configs:
+            - targets: ['192.168.50.141:9500']
+
+
+  - job_name: 'httpd'
+    static_configs:
+            - targets: ['192.168.50.165:9117']
+
   
   - job_name: 'node_exporter'
     static_configs:
@@ -49,6 +61,7 @@ scrape_configs:
   - job_name: 'rabbitmq_exporter'
     static_configs:
             - targets: ['rabbitmq:15692']
+
 
   - job_name: 'redis'
     kubernetes_sd_configs:
@@ -132,13 +145,11 @@ scrape_configs:
       regex: '(.*):80'
       replacement: '${1}'
       action: drop
-      
+
     - source_labels: [__address__]
       regex: '.*'
       target_label: instance
-      replacement: 'Appz${1}'
-
-
+      replacement: 'Appz${1}' 
 
   - job_name: 'postgres_exporter'
     kubernetes_sd_configs:
