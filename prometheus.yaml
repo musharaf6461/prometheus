@@ -33,7 +33,7 @@ scrape_configs:
 
   - job_name: 'cassandra'
     static_configs:
-            - targets: ['cassandra-exporter-3-11' ]
+            - targets:'cassandra-exporter-3-11' 
 
 
   - job_name: 'httpd'
