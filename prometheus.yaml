@@ -66,10 +66,11 @@ scrape_configs:
             - targets: ['rabbitmq:15692']
 
 
-  - job_name: 'redis'
+ - job_name: 'redis'
+   
     kubernetes_sd_configs:
     - role: endpoints
-    
+
     relabel_configs:
     - source_labels: [__meta_kubernetes_namespace]
       action: replace
@@ -80,14 +81,14 @@ scrape_configs:
 
     - source_labels: [pod]
       regex: redis.*
-      action: keep   
+      action: keep
 
     - source_labels: [__address__]
       target_label: __address__
       regex: '([^:]+)(:[6379]+)?'
       replacement: '${1}'
       action: drop
-      
+
     - source_labels: [__address__]
       regex: '.*'
       target_label: instance
