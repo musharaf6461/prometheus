@@ -54,37 +54,7 @@ scrape_configs:
     - source_labels: [__address__]
       regex: '.*'
       target_label: instance
-      replacement: 'AppZ${1}'
-
-  - job_name: 'mysql'
-    kubernetes_sd_configs:
-    - role: endpoints
-    
-    relabel_configs:
-    - source_labels: [__meta_kubernetes_namespace]
-      action: replace
-      target_label: namespace
-    - source_labels: [__meta_kubernetes_pod_name]
-      action: replace
-      target_label: pod
-        
-    - source_labels: [pod]
-      regex: mysql-5-7.*|mariadb-master-10-4.*
-      action: keep  
-
-    - source_labels: [__address__]
-      target_label: __address__
-      regex: '([^:]+)(:[3306]+)?'
-      replacement: '${1}'
-      action: drop
-      
-    - source_labels: [__address__]
-      regex: '.*'
-      target_label: instance
-      replacement: 'AppZ${1}'
-    
-
- 
+      replacement: 'AppZ${1}' 
 
   - job_name: 'cassandra'
     static_configs:
