@@ -78,7 +78,7 @@ scrape_configs:
       target_label: pod
 
     - source_labels: [pod]
-      regex: .*dotnet*.
+      regex: '((.*)dotnet(.*))'
       action: keep
     - source_labels: [__address__]
       regex: '.*'
