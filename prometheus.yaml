@@ -80,13 +80,6 @@ scrape_configs:
     - source_labels: [pod]
       regex: .*dotnet*.
       action: keep
-
-    - source_labels: [__address__]
-      target_label: __address__
-      regex: '([^:]+)(:[80]+)?'
-      replacement: '${1}'
-      action: drop
-
     - source_labels: [__address__]
       regex: '.*'
       target_label: instance
