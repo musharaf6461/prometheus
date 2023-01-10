@@ -57,7 +57,7 @@ scrape_configs:
       replacement: 'AppZ${1}' 
 
   - job_name: 'cassandra'
-        kubernetes_sd_configs:
+    kubernetes_sd_configs:
     - role: endpoints
 
     relabel_configs:
