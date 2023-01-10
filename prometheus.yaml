@@ -57,8 +57,24 @@ scrape_configs:
       replacement: 'AppZ${1}' 
 
   - job_name: 'cassandra'
-    static_configs:
-            - targets: ['192.168.50.141:9500']
+        kubernetes_sd_configs:
+    - role: endpoints
+
+    relabel_configs:
+    - source_labels: [__meta_kubernetes_namespace]
+      action: replace
+      target_label: namespace
+    - source_labels: [__meta_kubernetes_pod_name]
+      action: replace
+      target_label: pod
+
+    - source_labels: [pod]
+      regex: cassandra.*
+      action: keep
+    - source_labels: [__address__]
+      regex: '.*'
+      target_label: instance
+      replacement: 'AppZ${1}'
 
 
   - job_name: 'httpd'
