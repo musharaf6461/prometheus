@@ -276,8 +276,8 @@ scrape_configs:
      module: [http_2xx] 
     static_configs:
     - targets:
-#       - https://google.com/doesntexist
-#       - https://www.ecloudcontrol.com
+       - https://mushraf6461-dev-nginx-1-2.038c839d.lowtouch.cloud/
+       
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
