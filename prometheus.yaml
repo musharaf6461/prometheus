@@ -284,7 +284,7 @@ scrape_configs:
       - source_labels: [__param_target]
         target_label: instance
       - target_label: __address__
-        replacement: 192.168.99.102:9115
+        replacement: blackbox-exporter-0-2:9115
 
   - job_name: 'tower'
     metrics_path: /api/v2/metrics
