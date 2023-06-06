@@ -113,7 +113,7 @@ scrape_configs:
         replacement: node01
  
 
- - job_name: 'mongodb_exporter'
+  - job_name: 'mongodb_exporter'
     kubernetes_sd_configs:
     - role: endpoints
     
